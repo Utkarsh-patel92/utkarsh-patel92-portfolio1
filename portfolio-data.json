@@ -1,0 +1,163 @@
+{
+  "certifications": [
+    {
+      "id": "cert_1",
+      "issuer": "Google",
+      "name": "Google Data Analytics Professional Certificate",
+      "year": ""
+    },
+    {
+      "id": "cert_2",
+      "issuer": "Product School",
+      "name": "Product Analytics Micro Certification",
+      "year": ""
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Com",
+      "id": "edu_1",
+      "institution": "Ramjas College, University of Delhi",
+      "location": "New Delhi, India",
+      "year": "2025"
+    },
+    {
+      "degree": "Class XII",
+      "id": "edu_2",
+      "institution": "Lucknow Public School, Lucknow",
+      "location": "Lucknow, India",
+      "year": "2022"
+    },
+    {
+      "degree": "Class X",
+      "id": "edu_3",
+      "institution": "Lucknow Public School, Lucknow",
+      "location": "Lucknow, India",
+      "year": "2020"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Ashoka Builders (ASBL)",
+      "description": [
+        "Owned the roadmap for a new B2B Budgeting Module; conducted 15+ stakeholder interviews to define requirements, reducing budget variance tracking errors by 25%.",
+        "Collaborated with engineering to build a real time scheduling engine that alerts managers of delays; improved project timeline accuracy by 15%.",
+        "Designed and shipped an automated invoice rejection workflow, reducing accounts payable processing time by 12 hours per week.",
+        "Revamped the user onboarding flow for the internal SaaS tool, increasing Day-1 activation rates for site engineers from 60% to 85%.",
+        "Led the end to end digitization of the QC process, replacing manual logs with a mobile first Material Inspection Suite; reduced inspection turnaround time by 20%."
+      ],
+      "endDate": "Present",
+      "id": "exp_1",
+      "location": "Hyderabad, India",
+      "role": "Product Management Intern (PPO Offered)",
+      "startDate": "Aug 2025"
+    },
+    {
+      "company": "The Internet Folks",
+      "description": [
+        "Managed the agile development lifecycle for Vudio.ai, an AI powered shoppable video tool; facilitated sprint planning for a team of 6 devs.",
+        "Owned the PRD for core engagement features of an AI powered CMS; launched a Smart Connection algorithm that personalized content recommendations, driving an 18% increase in user retention.",
+        "Acted as the primary bridge between design and engineering, reducing design to dev handoff friction and cutting QA bug reports by 20%."
+      ],
+      "endDate": "June 2025",
+      "id": "exp_2",
+      "location": "New Delhi, India",
+      "role": "Product Management Intern",
+      "startDate": "Jan 2025"
+    },
+    {
+      "company": "Lovedit.net",
+      "description": [
+        "Founded and bootstrapped a media content platform to 100,000+ impressions and 1,000+ app downloads within 6 months via organic SEO.",
+        "Negotiated and executed the strategic acquisition of the platform by a private player in 2025 after demonstrating 30% MoM user growth.",
+        "Led the roadmap for the mobile app, prioritizing features based on user feedback, resulting in a 4.5/5 star rating on launch."
+      ],
+      "endDate": "Jan 2025",
+      "id": "exp_3",
+      "location": "New Delhi, India",
+      "role": "Founder",
+      "startDate": "Dec 2022"
+    },
+    {
+      "company": "The Product Folks",
+      "description": [
+        "Conducted funnel analysis on a Matrimony App's registration flow; identified friction points and designed a streamlined 3-step onboarding process.",
+        "Pivoted product strategy to explore a debate-to-date revenue model; designed a gamified matchmaking feature that increased average session time by 30%."
+      ],
+      "endDate": "Apr 2024",
+      "id": "exp_4",
+      "location": "New Delhi, India",
+      "role": "Product Management Fellow",
+      "startDate": "Jan 2024"
+    }
+  ],
+  "profile": {
+    "email": "Patelutkarsh921@gmail.com",
+    "fullName": "Utkarsh Patel",
+    "imageUrl": "",
+    "location": "India",
+    "phone": "+91-9260923393",
+    "resumeUrl": "",
+    "socials": {
+      "github": "",
+      "linkedin": "LinkedIn",
+      "twitter": "",
+      "website": "Utkarshnotes.com"
+    },
+    "summary": "Product Management professional with a track record of building and scaling products, including a successful startup exit. Experienced in B2B modules, AI-powered CMS, and user onboarding optimization.",
+    "title": "Product Management Intern"
+  },
+  "projects": [
+    {
+      "demoUrl": "",
+      "description": "Built a loyal audience of 3.5k+ subscribers and surpassed 1 million+ views in just one year by creating engaging content on cryptocurrency and investment strategies.",
+      "id": "proj_1",
+      "repoUrl": "",
+      "technologies": [
+        "YouTube",
+        "Content Creation"
+      ],
+      "title": "Crypto currency & Investment Influencer",
+      "type": "Content Creation"
+    },
+    {
+      "demoUrl": "",
+      "description": "Published an insightful article titled \"The Decline of Funding for Startups in India 2023\" for FinNomal Magazine, demonstrating expertise in the startup ecosystem.",
+      "id": "proj_2",
+      "repoUrl": "",
+      "technologies": [
+        "Research",
+        "Writing"
+      ],
+      "title": "FinNomal Magazine Contributor",
+      "type": "Publication"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Product Management",
+      "items": [
+        "Agile/Scrum",
+        "Product Roadmapping",
+        "A/B Testing",
+        "User Journey Mapping",
+        "PRD Writing",
+        "GTM Strategy"
+      ]
+    },
+    {
+      "category": "Tools",
+      "items": [
+        "JIRA",
+        "Confluence",
+        "Asana",
+        "Figma",
+        "Google Analytics",
+        "Mixpanel",
+        "Power Bi",
+        "SQL",
+        "Google Search Console"
+      ]
+    }
+  ]
+}
