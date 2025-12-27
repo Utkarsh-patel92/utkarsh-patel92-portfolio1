@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Utkarsh Patel - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+                gray: {
+                    750: '#2d3748',
+                    850: '#1a202c',
+                    950: '#0d1117',
+                }
+            }
+          },
+        },
+        darkMode: 'class',
+      }
+    </script>
+    <style>
+      body { background-color: #0d1117; color: #ffffff; }
+      html:not(.dark) body { background-color: #ffffff; color: #1a202c; }
+      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar-track { background: #1a202c; }
+      html:not(.dark) ::-webkit-scrollbar-track { background: #f7fafc; }
+      ::-webkit-scrollbar-thumb { background: #4a5568; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #718096; }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.2.0",
+        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+        "lucide-react": "https://esm.sh/lucide-react@0.300.0?external=react"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import React, { useState, useEffect } from 'react';
+      import ReactDOM from 'react-dom/client';
+      import { Github, Linkedin, Mail, ExternalLink, Globe, Phone, MapPin, Download, Sun, Moon } from 'lucide-react';
+
+      const Preview = ({ data }) => {
+        const [isDarkMode, setIsDarkMode] = useState(true);
+
+        useEffect(() => {
+            if (isDarkMode) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }, [isDarkMode]);
+
+        const containerClass = "w-full h-full overflow-y-auto";
+
+        return (
+          React.createElement("div", { className: `bg-white dark:bg-[#0a0a0a] text-gray-800 dark:text-gray-200 font-sans ${containerClass} transition-colors duration-300 mx-auto relative` },
+            /* Navigation */
+            React.createElement("nav", { className: "sticky top-0 z-50 bg-white/90 dark:bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 px-6 py-4 flex justify-between items-center text-sm transition-colors duration-300" },
+                React.createElement("div", { className: "font-bold text-gray-900 dark:text-white tracking-wider flex items-center gap-2" },
+                    React.createElement("div", { className: "w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 flex items-center justify-center text-xs" },
+                        data.profile.fullName ? data.profile.fullName.split(' ').map(n => n[0]).join('').substring(0,2) : 'ME'
+                    )
+                ),
+                React.createElement("div", { className: "hidden md:flex gap-6 text-gray-600 dark:text-gray-400" },
+                    ["Projects", "Experience", "Education", "Contact"].map(item => 
+                        React.createElement("a", { key: item, href: `#${item.toLowerCase()}`, className: "hover:text-black dark:hover:text-white transition-colors" }, item)
+                    )
+                ),
+                React.createElement("button", { onClick: () => setIsDarkMode(!isDarkMode), className: "text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors p-1" },
+                    isDarkMode ? React.createElement(Sun, { size: 20 }) : React.createElement(Moon, { size: 20 })
+                )
+            ),
+
+            /* Hero */
+            React.createElement("section", { id: "home", className: "px-6 py-20 md:py-32 max-w-4xl mx-auto text-center scroll-mt-24" },
+                React.createElement("div", { className: "mb-8 relative inline-block" },
+                    React.createElement("div", { className: "w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-gray-200 dark:border-gray-700 mx-auto transition-all duration-300 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] group cursor-pointer bg-gray-100 dark:bg-gray-800" },
+                        React.createElement("img", { src: data.profile.imageUrl, alt: data.profile.fullName, className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" })
+                    )
+                ),
+                React.createElement("h1", { className: "text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight" }, `Hey, I'm ${data.profile.fullName}`),
+                React.createElement("p", { className: "text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-8" }, data.profile.title),
+                React.createElement("div", { className: "flex gap-4 justify-center mb-12" },
+                    React.createElement("a", { href: `mailto:${data.profile.email}`, className: "px-6 py-2 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-white transition-all text-sm font-medium" }, "Get In Touch"),
+                    data.profile.resumeUrl && React.createElement("a", { href: data.profile.resumeUrl, target: "_blank", rel: "noopener noreferrer", className: "px-6 py-2 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-800 dark:text-white transition-all text-sm font-medium" }, "View Resume")
+                ),
+                React.createElement("p", { className: "max-w-2xl mx-auto text-gray-600 dark:text-gray-400 leading-relaxed" }, data.profile.summary)
+            ),
+
+            /* Skills */
+            React.createElement("section", { className: "px-6 py-12 max-w-4xl mx-auto scroll-mt-24" },
+                React.createElement("h2", { className: "text-xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-800 pb-2" }, "Technical Skills"),
+                React.createElement("div", { className: "flex flex-wrap gap-2" },
+                    data.skills.flatMap(s => s.items).map((skill, idx) => 
+                        React.createElement("span", { key: idx, className: "px-3 py-1 bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded text-sm text-gray-700 dark:text-gray-300 hover:border-gray-400 dark:hover:border-gray-600 transition-colors cursor-default" }, skill)
+                    )
+                )
+            ),
+
+            /* Projects */
+            React.createElement("section", { id: "projects", className: "px-6 py-12 max-w-4xl mx-auto scroll-mt-24" },
+                React.createElement("h2", { className: "text-center text-sm font-bold uppercase tracking-widest text-gray-500 mb-12" }, "Featured Projects"),
+                React.createElement("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-6" },
+                    data.projects.map(project => 
+                        React.createElement("div", { key: project.id, className: "bg-gray-50 dark:bg-[#0f1218] border border-gray-200 dark:border-gray-800 p-6 rounded-lg hover:border-gray-400 dark:hover:border-gray-600 transition-all group" },
+                            React.createElement("div", { className: "flex justify-between items-start mb-4" },
+                                React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" }, project.title)
+                            ),
+                            React.createElement("p", { className: "text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed" }, project.description),
+                            React.createElement("div", { className: "flex flex-wrap gap-2 mb-6" },
+                                project.technologies.map(tech => 
+                                    React.createElement("span", { key: tech, className: "text-xs px-2 py-1 bg-gray-200 dark:bg-gray-800 rounded text-gray-700 dark:text-gray-400 border border-gray-300 dark:border-gray-700" }, tech)
+                                )
+                            ),
+                            React.createElement("div", { className: "flex gap-4 text-xs font-medium text-gray-500 dark:text-gray-400" },
+                                project.demoUrl && React.createElement("a", { href: project.demoUrl, className: "flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors underline decoration-gray-400 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-white" }, "Preview"),
+                                project.repoUrl && React.createElement("a", { href: project.repoUrl, className: "flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors underline decoration-gray-400 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-white" }, React.createElement(Github, { size: 12 }), " View Repo")
+                            )
+                        )
+                    )
+                )
+            ),
+
+             /* Experience */
+            React.createElement("section", { id: "experience", className: "px-6 py-12 max-w-4xl mx-auto scroll-mt-24" },
+                React.createElement("h2", { className: "text-center text-sm font-bold uppercase tracking-widest text-gray-500 mb-12" }, "Work Experience"),
+                React.createElement("div", { className: "space-y-12" },
+                    data.experience.map(exp => 
+                        React.createElement("div", { key: exp.id, className: "relative pl-8 border-l border-gray-300 dark:border-gray-800" },
+                            React.createElement("div", { className: "absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-400 dark:bg-gray-600" }),
+                            React.createElement("h3", { className: "text-lg font-bold text-gray-900 dark:text-white" }, exp.role),
+                            React.createElement("div", { className: "text-gray-600 dark:text-gray-400 text-sm mb-4" }, exp.company),
+                            React.createElement("div", { className: "text-gray-500 dark:text-gray-600 text-xs mb-4 uppercase tracking-wide" }, `${exp.startDate} — ${exp.endDate}`),
+                            React.createElement("ul", { className: "space-y-2" },
+                                exp.description.map((point, idx) => 
+                                    React.createElement("li", { key: idx, className: "text-gray-600 dark:text-gray-400 text-sm leading-relaxed list-disc ml-4" }, point)
+                                )
+                            )
+                        )
+                    )
+                )
+            ),
+
+             /* Education */
+            React.createElement("section", { id: "education", className: "px-6 py-12 max-w-4xl mx-auto scroll-mt-24" },
+                 React.createElement("h2", { className: "text-center text-xl font-bold text-gray-900 dark:text-white mb-12 border-b border-gray-200 dark:border-gray-800 pb-4" }, "Education"),
+                 React.createElement("div", { className: "space-y-8" },
+                    data.education.map(edu => 
+                         React.createElement("div", { key: edu.id, className: "flex justify-between items-baseline group" },
+                            React.createElement("div", {}, 
+                                React.createElement("h3", { className: "text-gray-900 dark:text-white font-medium text-lg" }, edu.degree),
+                                React.createElement("div", { className: "text-gray-600 dark:text-gray-500 text-sm" }, edu.institution)
+                            ),
+                            React.createElement("div", { className: "text-gray-500 dark:text-gray-600 text-sm" }, edu.year)
+                         )
+                    )
+                 )
+            ),
+
+             /* Achievements */
+            React.createElement("section", { className: "px-6 py-12 max-w-4xl mx-auto scroll-mt-24" },
+                 React.createElement("h2", { className: "text-center text-sm font-bold uppercase tracking-widest text-gray-500 mb-12" }, "Achievements & Certifications"),
+                 React.createElement("div", { className: "space-y-6" },
+                    data.certifications.map(cert => 
+                        React.createElement("div", { key: cert.id },
+                            React.createElement("h3", { className: "text-gray-900 dark:text-white font-medium" }, cert.name),
+                            React.createElement("div", { className: "text-gray-600 dark:text-gray-500 text-xs" }, cert.issuer)
+                        )
+                    )
+                 )
+            ),
+
+             /* Contact */
+            React.createElement("section", { id: "contact", className: "px-6 py-20 bg-gray-50 dark:bg-[#0f1218] mt-20 border-t border-gray-200 dark:border-gray-800 scroll-mt-24 transition-colors duration-300" },
+                React.createElement("div", { className: "max-w-4xl mx-auto text-center" },
+                    React.createElement("h2", { className: "text-gray-900 dark:text-white font-bold text-xl mb-8" }, "Contact"),
+                    React.createElement("div", { className: "flex flex-col md:flex-row justify-center gap-6 md:gap-12 text-sm text-gray-600 dark:text-gray-400" },
+                        data.profile.email && React.createElement("a", { href: `mailto:${data.profile.email}`, className: "hover:text-black dark:hover:text-white transition-colors underline decoration-gray-400 dark:decoration-gray-700 hover:decoration-black dark:hover:decoration-white" }, data.profile.email),
+                        data.profile.phone && React.createElement("span", { className: "hover:text-black dark:hover:text-white transition-colors" }, data.profile.phone),
+                        data.profile.location && React.createElement("span", { className: "hover:text-black dark:hover:text-white transition-colors" }, data.profile.location)
+                    ),
+                    React.createElement("div", { className: "flex justify-center gap-6 mt-8" },
+                        data.profile.socials.linkedin && React.createElement("a", { href: data.profile.socials.linkedin, target: "_blank", rel: "noopener noreferrer", className: "text-gray-500 hover:text-black dark:hover:text-white transition-colors" }, React.createElement(Linkedin, { size: 20 })),
+                        data.profile.socials.github && React.createElement("a", { href: data.profile.socials.github, target: "_blank", rel: "noopener noreferrer", className: "text-gray-500 hover:text-black dark:hover:text-white transition-colors" }, React.createElement(Github, { size: 20 })),
+                        data.profile.socials.twitter && React.createElement("a", { href: data.profile.socials.twitter, target: "_blank", rel: "noopener noreferrer", className: "text-gray-500 hover:text-black dark:hover:text-white transition-colors" }, "X")
+                    ),
+                    React.createElement("div", { className: "mt-12 text-xs text-gray-500 dark:text-gray-600" },
+                         `© ${new Date().getFullYear()} ${data.profile.fullName}. All rights reserved.`,
+                         React.createElement("br"),
+                         React.createElement("span", { className: "flex items-center justify-center gap-1 mt-2" }, "Built with CVGenAI")
+                    )
+                )
+            )
+
+          )
+        );
+      };
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(React.createElement(Preview, { data: {"certifications":[{"id":"cert_1","issuer":"Google","name":"Google Data Analytics Professional Certificate","year":""},{"id":"cert_2","issuer":"Product School","name":"Product Analytics Micro Certification","year":""}],"education":[{"degree":"B.Com","id":"edu_1","institution":"Ramjas College, University of Delhi","location":"New Delhi, India","year":"2025"},{"degree":"Class XII","id":"edu_2","institution":"Lucknow Public School, Lucknow","location":"Lucknow, India","year":"2022"},{"degree":"Class X","id":"edu_3","institution":"Lucknow Public School, Lucknow","location":"Lucknow, India","year":"2020"}],"experience":[{"company":"Ashoka Builders (ASBL)","description":["Owned the roadmap for a new B2B Budgeting Module; conducted 15+ stakeholder interviews to define requirements, reducing budget variance tracking errors by 25%.","Collaborated with engineering to build a real time scheduling engine that alerts managers of delays; improved project timeline accuracy by 15%.","Designed and shipped an automated invoice rejection workflow, reducing accounts payable processing time by 12 hours per week.","Revamped the user onboarding flow for the internal SaaS tool, increasing Day-1 activation rates for site engineers from 60% to 85%.","Led the end to end digitization of the QC process, replacing manual logs with a mobile first Material Inspection Suite; reduced inspection turnaround time by 20%."],"endDate":"Present","id":"exp_1","location":"Hyderabad, India","role":"Product Management Intern (PPO Offered)","startDate":"Aug 2025"},{"company":"The Internet Folks","description":["Managed the agile development lifecycle for Vudio.ai, an AI powered shoppable video tool; facilitated sprint planning for a team of 6 devs.","Owned the PRD for core engagement features of an AI powered CMS; launched a Smart Connection algorithm that personalized content recommendations, driving an 18% increase in user retention.","Acted as the primary bridge between design and engineering, reducing design to dev handoff friction and cutting QA bug reports by 20%."],"endDate":"June 2025","id":"exp_2","location":"New Delhi, India","role":"Product Management Intern","startDate":"Jan 2025"},{"company":"Lovedit.net","description":["Founded and bootstrapped a media content platform to 100,000+ impressions and 1,000+ app downloads within 6 months via organic SEO.","Negotiated and executed the strategic acquisition of the platform by a private player in 2025 after demonstrating 30% MoM user growth.","Led the roadmap for the mobile app, prioritizing features based on user feedback, resulting in a 4.5/5 star rating on launch."],"endDate":"Jan 2025","id":"exp_3","location":"New Delhi, India","role":"Founder","startDate":"Dec 2022"},{"company":"The Product Folks","description":["Conducted funnel analysis on a Matrimony App's registration flow; identified friction points and designed a streamlined 3-step onboarding process.","Pivoted product strategy to explore a debate-to-date revenue model; designed a gamified matchmaking feature that increased average session time by 30%."],"endDate":"Apr 2024","id":"exp_4","location":"New Delhi, India","role":"Product Management Fellow","startDate":"Jan 2024"}],"profile":{"email":"Patelutkarsh921@gmail.com","fullName":"Utkarsh Patel","imageUrl":"","location":"India","phone":"+91-9260923393","resumeUrl":"","socials":{"github":"","linkedin":"LinkedIn","twitter":"","website":"Utkarshnotes.com"},"summary":"Product Management professional with a track record of building and scaling products, including a successful startup exit. Experienced in B2B modules, AI-powered CMS, and user onboarding optimization.","title":"Product Management Intern"},"projects":[{"demoUrl":"","description":"Built a loyal audience of 3.5k+ subscribers and surpassed 1 million+ views in just one year by creating engaging content on cryptocurrency and investment strategies.","id":"proj_1","repoUrl":"","technologies":["YouTube","Content Creation"],"title":"Crypto currency & Investment Influencer","type":"Content Creation"},{"demoUrl":"","description":"Published an insightful article titled \"The Decline of Funding for Startups in India 2023\" for FinNomal Magazine, demonstrating expertise in the startup ecosystem.","id":"proj_2","repoUrl":"","technologies":["Research","Writing"],"title":"FinNomal Magazine Contributor","type":"Publication"}],"skills":[{"category":"Product Management","items":["Agile/Scrum","Product Roadmapping","A/B Testing","User Journey Mapping","PRD Writing","GTM Strategy"]},{"category":"Tools","items":["JIRA","Confluence","Asana","Figma","Google Analytics","Mixpanel","Power Bi","SQL","Google Search Console"]}]} }));
+    </script>
+  </body>
+</html>
